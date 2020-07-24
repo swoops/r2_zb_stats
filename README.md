@@ -54,7 +54,7 @@ in top 20 : 246
 ```
 These numbers show when `zb` produced the correct result in the top `n`
 results. So `zb` was able to find the correct signature in the top 5 results
-197 times. Raising 51.91% to 52.33%.
+197 times. Raising 41.91% to 52.33%.
 
 ### False Positives
 I am not foccussed on dealing with these yet. This is included for
