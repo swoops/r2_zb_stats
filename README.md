@@ -29,5 +29,9 @@ the output.
 56.62% chance correct signature is in top 20 results
 ```
 
+Note: 26.00% is a bit low b/c it is testing for a 100% match on graph AND byte
+signatures. Where a `z.` will really only look for a 100% match on graph OR
+byte signatures.
+
 See the `stats` file for more details. Also, keep in mind this is just some
-stuff I threw together so the stats might be a bit off.
+stuff I threw together so the stats might be a bit off. 
