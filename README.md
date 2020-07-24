@@ -21,98 +21,13 @@ the output.
 ### results
 
 ```
-total : 921
-```
-There were 921 functions processed total.
-
-```
-zb useless : 261
-```
-Of those, 261 resulted in a correct perfect match on bytes and graph
-signatures. This means `zb` was of no real help, since normal matching
-succeded. So 28.33% success. Of the 261 perfect results, 59 of them had perfect
-false positives.
-
-```
-total not perfect : 660
-```
-So there were 660 functions left where the signature did not match perfectly.
-
-```
-zb best : 125
-```
-Of the 660 not perfect cases `zb` returned the correct signature as the top
-result. This signature was not a perfect match, but it was the closest match.
-This means, with the 261 perfect matches above, `zb` raises the 28.33% match
-percentage to 41.91% with just one result.
-
-```
-in top 5 : 197
-in top 10 : 221
-in top 15 : 235
-in top 20 : 246
-```
-These numbers show when `zb` produced the correct result in the top `n`
-results. So `zb` was able to find the correct signature in the top 5 results
-197 times. Raising 41.91% to 52.33%.
-
-### False Positives
-I am not foccussed on dealing with these yet. This is included for
-completeness.
-
-```
-perfect fp : 111
-```
-111 times there was a perfect match between a function and at least one wrong
-signature.
-
-```
-perfect with fp : 59
-```
-59 times there were perfect matches for the correct signature and at least one
-wrong signature.
-
-# why false positives
-
-Like I said, I am not focused on this but a quick peek will help. But a quick
-peek already found a bunch:
-
-```
-sym._nl_load_domain.cold
-1.00000  1.00000 B  1.00000 G   sym.strfromf128.cold
-1.00000  1.00000 B  1.00000 G   sym.__GI___printf_fp_l.cold
-1.00000  1.00000 B  1.00000 G   sym.strfroml.cold
-1.00000  1.00000 B  1.00000 G   sym.round_away.cold
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold
-1.00000  1.00000 B  1.00000 G   sym.getifaddrs_internal.cold
-1.00000  1.00000 B  1.00000 G   sym.__regerror.cold
-1.00000  1.00000 B  1.00000 G   sym._nl_load_domain.cold
-1.00000  1.00000 B  1.00000 G   sym.strfromd.cold
-1.00000  1.00000 B  1.00000 G   sym._IO_seekoff_unlocked.cold
-1.00000  1.00000 B  1.00000 G   sym.re_compile_internal.cold
-1.00000  1.00000 B  1.00000 G   sym.__printf_fphex.cold
-1.00000  1.00000 B  1.00000 G   sym.__GI_authunix_create.cold
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold_5
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold_4
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold_7
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold_6
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold_1
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold_3
-1.00000  1.00000 B  1.00000 G   sym.round_and_return.cold_2
+26.00% chance signature would be found without zb
+40.62% chance correct signature is number 1 result of zb
+50.50% chance correct signature is in top 5 results
+53.62% chance correct signature is in top 10 results
+55.38% chance correct signature is in top 15 results
+56.62% chance correct signature is in top 20 results
 ```
 
-This also means there was a 100% match on `sym.strfromf128.cold` for all of the
-above. So this alone accounts for at least 20 of the 59 `perfect with fp`.
-
-The `sym._nl_load_domain.cold` function looks like: 
-```
-[0x00025727]> pdf
-┌ 5: sym._nl_load_domain.cold ();
-│ bp: 0 (vars 0, args 0)
-│ sp: 0 (vars 0, args 0)
-│ rg: 0 (vars 0, args 0)
-└           0x00025727      e800000000     call sym.abort              ; void abort(void)
-```
-
-So apparently the default `zign.minsz` of 16 is not properly enforced. I will
-work on fixing this bug very soon.
+See the `stats` file for more details. Also, keep in mind this is just some
+stuff I threw together so the stats might be a bit off.
