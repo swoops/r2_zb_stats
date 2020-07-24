@@ -35,3 +35,19 @@ byte signatures.
 
 See the `stats` file for more details. Also, keep in mind this is just some
 stuff I threw together so the stats might be a bit off. 
+
+## results `e zign.graph = false`
+
+Results are more favorable without the graph signature.
+
+```
+31.13% chance signature would be found without zb
+34.88% chance correct signature is number 1 result of zb
+46.25% chance correct signature is in top 5 results
+46.62% chance correct signature is in top 10 results
+46.88% chance correct signature is in top 15 results
+47.00% chance correct signature is in top 20 results
+```
+
+So the previous `26.00%` should really be at least `31.13%`. However, `zb`
+seems to benifit from using both pieces of information.
