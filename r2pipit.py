@@ -59,6 +59,7 @@ def dostats(zb, name):
 r = r2pipe.open("./static")
 r.cmd("zo ./libc.sdb")
 r.cmd("aa")
+# r.cmd("e zign.graph = false")
 funcs = r.cmdj("aflj")
 
 print("Version: %s" % r.cmd("?V"))

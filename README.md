@@ -22,14 +22,14 @@ the output.
 
 ```
 26.00% chance signature would be found without zb
-40.62% chance correct signature is number 1 result of zb
-50.50% chance correct signature is in top 5 results
-53.62% chance correct signature is in top 10 results
-55.38% chance correct signature is in top 15 results
-56.62% chance correct signature is in top 20 results
+53.62% chance correct signature is number 1 result of zb
+57.63% chance correct signature is in top 5 results
+58.13% chance correct signature is in top 10 results
+58.50% chance correct signature is in top 15 results
+58.50% chance correct signature is in top 20 results
 ```
 
-Note: 26.00% is a bit low b/c it is testing for a 100% match on graph AND byte
+Note: 26.00% is low b/c it is testing for a 100% match on graph AND byte
 signatures. Where a `z.` will really only look for a 100% match on graph OR
 byte signatures.
 
@@ -42,12 +42,12 @@ Results are more favorable without the graph signature.
 
 ```
 31.13% chance signature would be found without zb
-34.88% chance correct signature is number 1 result of zb
-46.25% chance correct signature is in top 5 results
-46.62% chance correct signature is in top 10 results
-46.88% chance correct signature is in top 15 results
-47.00% chance correct signature is in top 20 results
+45.75% chance correct signature is number 1 result of zb
+48.38% chance correct signature is in top 5 results
+48.50% chance correct signature is in top 10 results
+48.75% chance correct signature is in top 15 results
+48.88% chance correct signature is in top 20 results
 ```
 
-So the previous `26.00%` should really be at least `31.13%`. However, `zb`
+So the previous `26.00%` should really be at least `45.75%`. However, `zb`
 seems to benifit from using both pieces of information.
