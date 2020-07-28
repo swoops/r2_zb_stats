@@ -49,5 +49,5 @@ Results are more favorable without the graph signature.
 48.88% chance correct signature is in top 20 results
 ```
 
-So the previous `26.00%` should really be at least `45.75%`. However, `zb`
+So the previous `26.00%` should really be at least `31.13%`. However, `zb`
 seems to benifit from using both pieces of information.
